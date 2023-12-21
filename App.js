@@ -12,6 +12,7 @@ import LogInScreen from './pages/LoginScreen';
 import { StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // veya başka bir ikon kütüphanesi
 import Register from './pages/Register';
+import Account from './pages/Account';
 
 
 // Stack ve Tab navigatorları oluştur
@@ -24,6 +25,7 @@ function HomeTabs() {
     <Tab.Navigator>
       <Tab.Screen name="AnaSayfa" component={AnaSayfa} options={{ tabBarIcon: ({ color, size }) => (<Ionicons name="home" color={color} size={size} />),headerShown: false}} />
       <Tab.Screen name="Dükkanlar" component={Shops} options={{ tabBarIcon: ({ color, size }) => (<Ionicons name="compass" color={color} size={size} />),headerShown: false}} />
+      <Tab.Screen name="Hesap" component={Account} options={{ tabBarIcon: ({ color, size }) => (<Ionicons name="person-outline" color={color} size={size} />),headerShown: false}} />
       <Tab.Screen name="DetaySayfa" component={DetaySayfa} options={{ headerShown: false, tabBarButton: () => null}} />
       <Tab.Screen name="ShopDetail" component={ShopDetailPage} options={{headerShown: false, tabBarButton: () => null}} />
     </Tab.Navigator>
@@ -53,7 +55,7 @@ export default function App() {
         {/* <Stack.Screen 
           name="ShopDetail" 
           component={ShopDetailPage} 
-          // İsteğe bağlı olarak header ve diğer ayarları burada yapabilirsiniz
+          // İsteğe bağlı olarak header ve diğer ayarları burada yapabilirsinizzzzzzz
         /> */}
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,11 +1,12 @@
 //shops.js
 
-import React from 'react';
+import React,{useState,useEffect, useRef } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import Colors from '../color/color';
 import { useNavigation } from '@react-navigation/native';
 import ShopDetailPage from './shopDetailPage';
+import CustomButton from '../components/CustomButton';
 
 
 
@@ -47,18 +48,65 @@ function Shops({navigation}) {
     // Diğer dükkan bilgileri...
   ];
 
+  const images = [require('./images/merryCristmas.jpg'),
+  require('./images/feelHot.jpg'),
+  require('./images/hotter.jpg'),
+  require('./images/handsome.jpg'),];
+
+  const [active, setActive] = useState(0);
+  const scrollRef = useRef();
+
 
     const handleShopPress = () => {
       navigation.navigate("ShopDetail");
     };
 
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setActive(prevActive => {
+          const nextActive = prevActive === images.length - 1 ? 0 : prevActive + 1;
+  
+          // ScrollView'ı yeni aktif resme kaydır
+          if (scrollRef.current) {
+            scrollRef.current.scrollTo({
+              animated: true,
+              y: 0,
+              x: width * nextActive
+            });
+          }
+  
+          return nextActive;
+        });
+      }, 5000); // 5 saniyede bir kaydır
+  
+      return () => clearInterval(interval);
+    }, []);
+
   return (
-    <LinearGradient colors={['#00FA9A', '#00BFFF']} style={{ flex: 1 }}>
+    <LinearGradient colors={['white', 'white']} style={{ flex: 1 }}>
+      <View>
+      <Image
+        source={require('./images/header.jpg')}
+        style={styles.headerImage}
+      />
+      </View>
       
     <ScrollView style={styles.outerContainer}>
-    <View style={styles.imageContainer}>
-      <Image source={require('./images/pick.jpg')} style={styles.imageBigger} />
-    </View>
+    <View style={styles.headerButtons}>
+        <CustomButton title='Adres'/>
+        <CustomButton title='XQXQXXQX'/>
+      </View>
+
+      <ScrollView 
+        horizontal  
+        pagingEnabled 
+        ref={scrollRef}
+        showsHorizontalScrollIndicator={false} 
+        style={styles.imageContainer}>
+          {images.map((image, index) => (
+            <Image key={index} source={image} style={styles.imageCard} />
+          ))}
+        </ScrollView>
     
       {shopsData.map((shop, index) => (
         <ShopCard
@@ -93,9 +141,10 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     backgroundColor:'white',
+    borderWidth:1,
     padding: 20,
-    margin: 10,
-    borderRadius: 15,
+    marginTop:3,
+    borderTopWidth:0
   },
   image: {
     width: 75,
@@ -120,6 +169,23 @@ const styles = StyleSheet.create({
     width:width,
     height:width/2
 
+  },
+  headerButtons:{
+    backgroundColor:'transparent',
+    flexDirection:'row'
+  },
+  headerImage:{
+    width:width,
+    height:100
+  },
+  imageContainer: {
+    width:width,
+    flexDirection: 'row',
+  },
+  imageCard: {
+    width: width, // Resim boyutunuzu ayarlayın
+    height: 250, // Resim boyutunuzu ayarlayın
+     // Resimler arası boşluk
   },
 });
 
