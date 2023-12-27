@@ -1,4 +1,4 @@
-
+//color.js
 
 const Colors = {
     renk1: 'rgb(213, 242, 248)',

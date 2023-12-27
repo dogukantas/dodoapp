@@ -14,13 +14,13 @@ const { width } = Dimensions.get('window');
 
 
 
-const ShopCard = ({ name, distance, reviews, onPress}) => {
+const ShopCard = ({ name, distance, reviews,image1, onPress}) => {
 
   return (
     <TouchableOpacity onPress={onPress}>
     <View style={styles.card}>
       <Image
-        source={{ uri: 'https://marketplace.canva.com/EAFRjQYrOoU/1/0/1600w/canva-black-and-white-modern-barber-shop-logo-wJRJ22uj-3A.jpg' }}
+        source={image1}
         style={styles.image}
       />
       <View style={styles.info}>
@@ -39,11 +39,11 @@ function Shops({navigation}) {
   // Burada mağaza bilgilerini bir array olarak alabilirsiniz.
   // Örnek bir data array'i kullanılacak.
   const shopsData = [
-    { name: 'QWE Erkek Kuaförü', distance: '2km', reviews: '265'},
-    { name: 'Neco Erkek Kuaförü', distance: '8km', reviews: '129'},
-    { name: 'Stylish Berber', distance: '12km', reviews: '9'},
-    { name: 'QWE Erkek Kuaförü', distance: '2km', reviews: '265'},
-    { name: 'Neco Erkek Kuaförü', distance: '8km', reviews: '129'},
+    { name: 'QWE Erkek Kuaförü', distance: '2km', reviews: '265', image1:require('./images/ian.jpg')},
+    { name: 'Neco Erkek Kuaförü', distance: '8km', reviews: '129', image1:require('./images/beckham.jpg')},
+    { name: 'Stylish Berber', distance: '12km', reviews: '9', image1:require('./images/margot.jpg')},
+    { name: 'QWE Erkek Kuaförü', distance: '2km', reviews: '265', image1:require('./images/beckham.jpg')},
+    { name: 'Neco Erkek Kuaförü', distance: '8km', reviews: '129', image1:require('./images/ian.jpg')},
    
     // Diğer dükkan bilgileri...
   ];
@@ -93,8 +93,8 @@ function Shops({navigation}) {
       
     <ScrollView style={styles.outerContainer}>
     <View style={styles.headerButtons}>
-        <CustomButton title='Adres'/>
-        <CustomButton title='XQXQXXQX'/>
+        <CustomButton title='Atatürk mah. 202/...' style={styles.customButton}/>
+        <CustomButton title='Bildirimler' style={styles.customButton}/>
       </View>
 
       <ScrollView 
@@ -187,5 +187,11 @@ const styles = StyleSheet.create({
     height: 250, // Resim boyutunuzu ayarlayın
      // Resimler arası boşluk
   },
+  customButton:{
+    width:width/2,
+    backgroundColor:'#FCEABA',
+    padding:12,
+    borderRightWidth:1
+  }
 });
 

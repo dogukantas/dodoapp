@@ -177,8 +177,8 @@ function ShopDetailPage() {
       
       <ScrollView style={styles.container}>
       <View style={styles.headerButtons}>
-        <CustomButton title='Adres'/>
-        <CustomButton title='XQXQXXQX'/>
+        <CustomButton style={styles.customButton} title='Adres'/>
+        <CustomButton style={styles.customButton} title='XQXQXXQX'/>
       </View>
         <ScrollView 
         horizontal  
@@ -322,5 +322,11 @@ const styles = StyleSheet.create({
   commentUserName:{
     fontWeight:'bold',
     color:'darkred'
+  },
+  customButton:{
+    width:width/2,
+    backgroundColor:'#FCEABA',
+    padding:12,
+    borderRightWidth:1
   }
 });

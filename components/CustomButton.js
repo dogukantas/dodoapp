@@ -6,9 +6,9 @@ import { TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-function CustomButton({ onPress, title }) {
+function CustomButton({ onPress, title, style }) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={style} onPress={onPress}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );

@@ -9,11 +9,17 @@ import AnaSayfa from './pages/anasayfa';
 import Shops from './pages/shops';
 import ShopDetailPage from './pages/shopDetailPage';
 import LogInScreen from './pages/LoginScreen';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // veya başka bir ikon kütüphanesi
 import Register from './pages/Register';
 import Account from './pages/Account';
-
+import Adresses from './pages/profile/Adresses';
+import CreditCards from './pages/profile/CreditCards';
+import FavoritePlaces from './pages/profile/FavoritePlaces';
+import GiftedCoupons from './pages/profile/GiftedCoupons';
+import Notifications from './pages/profile/Notifications';
+import PastComments from './pages/profile/PastComments';
+import PastReservations from './pages/profile/PastReservations';
 
 // Stack ve Tab navigatorları oluştur
 const Stack = createStackNavigator();
@@ -22,6 +28,7 @@ const Tab = createBottomTabNavigator();
 // Tab Navigator bileşenini oluştur
 function HomeTabs() {
   return (
+    
     <Tab.Navigator>
       <Tab.Screen name="AnaSayfa" component={AnaSayfa} options={{ tabBarIcon: ({ color, size }) => (<Ionicons name="home" color={color} size={size} />),headerShown: false}} />
       <Tab.Screen name="Dükkanlar" component={Shops} options={{ tabBarIcon: ({ color, size }) => (<Ionicons name="compass" color={color} size={size} />),headerShown: false}} />
@@ -35,7 +42,12 @@ function HomeTabs() {
 // Stack Navigator içinde Tab Navigator'ı kullan
 export default function App() {
   return (
+    
     <NavigationContainer>
+      <>
+    <StatusBar hidden={true} />
+    {/* Uygulamanızın geri kalan içeriği */}
+  </>
       <Stack.Navigator>
       <Stack.Screen 
           name="LoginScreen" 
@@ -52,11 +64,42 @@ export default function App() {
           component={HomeTabs} 
           options={{ headerShown: false }} 
         />
-        {/* <Stack.Screen 
-          name="ShopDetail" 
-          component={ShopDetailPage} 
-          // İsteğe bağlı olarak header ve diğer ayarları burada yapabilirsinizzzzzzz
-        /> */}
+        <Stack.Screen 
+          name="KayitliAdreslerim" 
+          component={Adresses} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="KayitliKartlarim" 
+          component={CreditCards} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="FavoriMekanlarım" 
+          component={FavoritePlaces} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="KazandigimKuponlar" 
+          component={GiftedCoupons} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="Bildirimlerim" 
+          component={Notifications} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="GecmisYorumlarım" 
+          component={PastComments} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="GecmisRandevularim" 
+          component={PastReservations} 
+          options={{ headerShown: false }} 
+        />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

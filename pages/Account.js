@@ -1,6 +1,6 @@
 // Account.js
 
-import { View,Text, StyleSheet, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
+import { View,Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import React,{useState} from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -11,7 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 const { width } = Dimensions.get('window');
 
 
-function Account() { 
+function Account({navigation}) { 
 
     return(
         
@@ -23,31 +23,31 @@ function Account() {
             />
         </View>
         <View style={styles.container}>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("Bildirimlerim")}>
                 <Text style={styles.text}>Bildirimler</Text>
                 <Ionicons name="notifications-outline" size={25} color="orange" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("KayitliAdreslerim")}>
                 <Text style={styles.text}>Kayıtlı Adreslerim</Text>
-                <Ionicons name="location-outline" size={25} color="orange" />
+                <Ionicons name="location-outline" size={25} color="orange"/>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("KayitliKartlarim")}>
                 <Text style={styles.text}>Kayıtlı Kartlarım</Text>
                 <Ionicons name="card-outline" size={25} color="orange" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("GecmisRandevularim")}>
                 <Text style={styles.text}>Geçmiş Randevularım</Text>
                 <Ionicons name="planet-outline" size={25} color="orange" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("FavoriMekanlarım")}>
                 <Text style={styles.text}>Favori Mekanlarım</Text>
                 <Ionicons name="heart-outline" size={25} color="orange" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("GecmisYorumlarım")}>
                 <Text style={styles.text}>Geçmiş Yorumlarım</Text>
                 <Ionicons name="text-outline" size={25} color="orange" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={()=>navigation.navigate("KazandigimKuponlar")}>
                 <Text style={styles.text}>Kazandığım Kuponlar</Text>
                 <Ionicons name="gift-outline" size={25} color="orange" />
             </TouchableOpacity>
